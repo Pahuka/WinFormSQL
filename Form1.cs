@@ -15,6 +15,8 @@ namespace WinFormSQL
         public Form1()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,42 +31,51 @@ namespace WinFormSQL
 
         private void UpdateData()
         {
-            data.OpenConnection();
+            if (data.GetConnection().State == System.Data.ConnectionState.Closed)
+                data.OpenConnection();
             dataSet = new DataSet();
             adapter = new SqlDataAdapter("SELECT * FROM [Users]", data.GetConnection());
             adapter.Fill(dataSet, "Users");
             dataGridView1.DataSource = dataSet.Tables["Users"];
+            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
             data.CloseConnection();
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            data.OpenConnection();
-            command = new SqlCommand($"INSERT INTO [Users] (UserName) VALUES (N'{textBox2.Text}')", data.GetConnection());
-            command.ExecuteNonQuery();
-            data.CloseConnection();
+            if (textBox2.Text.Length == 0)
+                MessageBox.Show("Введите имя пользователя", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                data.OpenConnection();
+                command = new SqlCommand($"INSERT INTO [Users] (Id, [User Name]) VALUES ('{Guid.NewGuid()}', N'{textBox2.Text}')", data.GetConnection());
+                command.ExecuteNonQuery();
+                UpdateData();
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Columns.Clear();
+            countRows.Text = "Количество записей - 0";
         }
 
         private void removeUserButton_Click(object sender, EventArgs e)
         {
             data.OpenConnection();
-            command = new SqlCommand($"DELETE FROM [Users] WHERE UserName = '{textBox3.Text}'", data.GetConnection());
+            command = new SqlCommand($"DELETE FROM [Users] WHERE [User Name] = N'{textBox3.Text}'", data.GetConnection());
             command.ExecuteNonQuery();
-            data.CloseConnection();
+            UpdateData();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             data.OpenConnection();
             dataSet = new DataSet();
-            adapter = new SqlDataAdapter($"SELECT * FROM [Users] WHERE UserName = '{textBox1.Text}'", data.GetConnection());
+            adapter = new SqlDataAdapter($"SELECT * FROM [Users] WHERE [User Name] = N'{textBox1.Text}'", data.GetConnection());
             adapter.Fill(dataSet, "Users");
             dataGridView1.DataSource = dataSet.Tables["Users"];
+            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
             data.CloseConnection();
         }
     }
