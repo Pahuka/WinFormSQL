@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -6,7 +7,10 @@ namespace WinFormSQL
 {
     public partial class Form1 : Form
     {
-        static Data data = new Data();        
+        static Data data = new Data();
+        static DataSet dataSet;
+        static SqlCommand command;
+        static SqlDataAdapter adapter;
 
         public Form1()
         {
@@ -23,38 +27,44 @@ namespace WinFormSQL
             UpdateData();
         }
 
-        private async void UpdateData()
+        private void UpdateData()
         {
-            textBox1.Clear();
             data.OpenConnection();
-            SqlCommand command = new SqlCommand("SELECT * FROM [Users]", data.GetConnection());
-            SqlDataReader reader = await command.ExecuteReaderAsync();
-            while (reader.Read())
-            {
-                textBox1.Text += $"{Convert.ToString(reader["Id"])}, {Convert.ToString(reader["UserName"])}, {Convert.ToString(reader["Date"])}\r\n";
-            }
-            reader.Close();
+            dataSet = new DataSet();
+            adapter = new SqlDataAdapter("SELECT * FROM [Users]", data.GetConnection());
+            adapter.Fill(dataSet, "Users");
+            dataGridView1.DataSource = dataSet.Tables["Users"];
             data.CloseConnection();
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
             data.OpenConnection();
-            SqlCommand command = new SqlCommand($"INSERT INTO [Users] (UserName) VALUES (N'{textBox2.Text}')", data.GetConnection());
+            command = new SqlCommand($"INSERT INTO [Users] (UserName) VALUES (N'{textBox2.Text}')", data.GetConnection());
             command.ExecuteNonQuery();
             data.CloseConnection();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
+            dataGridView1.Columns.Clear();
         }
 
         private void removeUserButton_Click(object sender, EventArgs e)
         {
             data.OpenConnection();
-            SqlCommand command = new SqlCommand($"DELETE FROM [Users] WHERE UserName = '{textBox3.Text}'", data.GetConnection());
+            command = new SqlCommand($"DELETE FROM [Users] WHERE UserName = '{textBox3.Text}'", data.GetConnection());
             command.ExecuteNonQuery();
+            data.CloseConnection();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            data.OpenConnection();
+            dataSet = new DataSet();
+            adapter = new SqlDataAdapter($"SELECT * FROM [Users] WHERE UserName = '{textBox1.Text}'", data.GetConnection());
+            adapter.Fill(dataSet, "Users");
+            dataGridView1.DataSource = dataSet.Tables["Users"];
             data.CloseConnection();
         }
     }
