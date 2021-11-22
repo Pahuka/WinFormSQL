@@ -7,24 +7,26 @@ using System.Data.SqlClient;
 
 namespace WinFormSQL
 {
-    class Data
+    static class Data
     {
-        private SqlConnection sqlConnection = new SqlConnection(
+        private static SqlConnection sqlConnection = new SqlConnection(
             @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\brylin_da\source\repos\WinFormSQL\Database1.mdf;Integrated Security=True");
 
-        public void OpenConnection()
+        public static string DataPath { get; set; }
+
+        public static void OpenConnection()
         {
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
         }
 
-        public void CloseConnection()
+        public static void CloseConnection()
         {
             if (sqlConnection.State == System.Data.ConnectionState.Open)
                 sqlConnection.Close();
         }
 
-        public SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
             return sqlConnection;
         }
