@@ -28,13 +28,11 @@ namespace WinFormSQL
             else
             {
                 Data.OpenConnection();
-                //command = new SqlCommand($"INSERT INTO [Employees] (Id, [User Name], Post, Sex, Salary) " +
-                //    $"VALUES ('{Guid.NewGuid()}', N'{userName.Text}', N'{userPost.Text}', N'{userSex.Text}', N'{userSalary.Text}')", Data.GetConnection());
-                //command.ExecuteNonQuery();
                 var admin = adminCheck.Checked == true ? "true" : "false";
                 command = new SqlCommand($"INSERT INTO [Users] (Id, [First Name], [Last Name], Login, Password, Administrator) " +
                     $"VALUES ('{Guid.NewGuid()}', N'{firstName.Text}', N'{lastName.Text}', N'{login.Text}', N'{password.Text}' , N'{admin}')", Data.GetConnection());
                 command.ExecuteNonQuery();
+                Data.CloseConnection();
                 MessageBox.Show("Пользователь успешно добавлен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

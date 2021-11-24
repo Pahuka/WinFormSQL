@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataBase;
 
@@ -23,11 +20,14 @@ namespace WinFormSQL
         private void Form2_Load(object sender, EventArgs e)
         {
             Data.OpenConnection();
-            var dataSet = new DataSet();
-            var adapter = new SqlDataAdapter(SqlCommand, Data.GetConnection());
-            adapter.Fill(dataSet, "Users");
-            dataGridView1.DataSource = dataSet.Tables["Users"];
-            label1.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
+            var command = new SqlCommand(SqlCommand, Data.GetConnection());
+            SqlDataReader dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                titleBox.Text = (string)dataReader.GetValue(1);
+                reqBox.Text = (string)dataReader.GetValue(2);
+                contentBox.Text = (string)dataReader.GetValue(5);
+            }
             Data.CloseConnection();
         }
     }

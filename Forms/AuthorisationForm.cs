@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataBase;
 
-namespace WinFormSQL.Forms
+namespace WinFormSQL
 {
-    public partial class Authorisation : Form
+    public partial class AuthorisationForm : Form
     {
-        public Authorisation()
+        public AuthorisationForm()
         {
             InitializeComponent();
         }
