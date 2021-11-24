@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataBase;
 
 namespace WinFormSQL
 {
@@ -26,7 +27,7 @@ namespace WinFormSQL
             var adapter = new SqlDataAdapter(SqlCommand, Data.GetConnection());
             adapter.Fill(dataSet, "Users");
             dataGridView1.DataSource = dataSet.Tables["Users"];
-            //countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
+            label1.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
             Data.CloseConnection();
         }
     }

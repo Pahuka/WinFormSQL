@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormSQL
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,8 +31,6 @@ namespace WinFormSQL
         {
             this.updateButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.clearButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.removeUserButton = new System.Windows.Forms.Button();
@@ -60,36 +58,19 @@ namespace WinFormSQL
             // addUserButton
             // 
             this.addUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addUserButton.Location = new System.Drawing.Point(710, 234);
+            this.addUserButton.Enabled = false;
+            this.addUserButton.Location = new System.Drawing.Point(710, 117);
             this.addUserButton.Name = "addUserButton";
-            this.addUserButton.Size = new System.Drawing.Size(117, 48);
+            this.addUserButton.Size = new System.Drawing.Size(117, 43);
             this.addUserButton.TabIndex = 1;
             this.addUserButton.Text = "Добавить пользователя";
             this.addUserButton.UseVisualStyleBackColor = true;
             this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(710, 288);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Имя пользователя";
-            this.textBox2.Size = new System.Drawing.Size(117, 23);
-            this.textBox2.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(702, 223);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(135, 103);
-            this.panel1.TabIndex = 3;
-            // 
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(710, 52);
+            this.clearButton.Location = new System.Drawing.Point(710, 64);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(117, 36);
             this.clearButton.TabIndex = 1;
@@ -101,7 +82,7 @@ namespace WinFormSQL
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(702, 103);
+            this.panel2.Location = new System.Drawing.Point(702, 196);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(135, 100);
             this.panel2.TabIndex = 3;
@@ -109,7 +90,7 @@ namespace WinFormSQL
             // removeUserButton
             // 
             this.removeUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeUserButton.Location = new System.Drawing.Point(710, 114);
+            this.removeUserButton.Location = new System.Drawing.Point(710, 207);
             this.removeUserButton.Name = "removeUserButton";
             this.removeUserButton.Size = new System.Drawing.Size(117, 45);
             this.removeUserButton.TabIndex = 1;
@@ -120,7 +101,7 @@ namespace WinFormSQL
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(710, 168);
+            this.textBox3.Location = new System.Drawing.Point(710, 261);
             this.textBox3.Name = "textBox3";
             this.textBox3.PlaceholderText = "Имя пользователя";
             this.textBox3.Size = new System.Drawing.Size(117, 23);
@@ -147,7 +128,7 @@ namespace WinFormSQL
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Location = new System.Drawing.Point(702, 344);
+            this.panel3.Location = new System.Drawing.Point(702, 330);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(135, 103);
             this.panel3.TabIndex = 3;
@@ -155,7 +136,7 @@ namespace WinFormSQL
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(710, 355);
+            this.button1.Location = new System.Drawing.Point(710, 341);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 48);
             this.button1.TabIndex = 1;
@@ -166,7 +147,7 @@ namespace WinFormSQL
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(710, 409);
+            this.textBox1.Location = new System.Drawing.Point(710, 395);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Имя пользователя";
             this.textBox1.Size = new System.Drawing.Size(117, 23);
@@ -182,7 +163,7 @@ namespace WinFormSQL
             this.countRows.TabIndex = 5;
             this.countRows.Text = "Количество записей - 0";
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,7 +172,6 @@ namespace WinFormSQL
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.removeUserButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.addUserButton);
@@ -199,11 +179,11 @@ namespace WinFormSQL
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(860, 497);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SqlTest";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -214,8 +194,6 @@ namespace WinFormSQL
         #endregion
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button addUserButton;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button removeUserButton;
