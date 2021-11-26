@@ -24,10 +24,7 @@ namespace WinFormSQL
         private void Form1_Load(object sender, EventArgs e)
         {
             if (CurrentUser.Administrator)
-            {
-                addUserButton.Enabled = true;
-                removeUserButton.Enabled = true;
-            }
+                adminMenu.Enabled = true;
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -60,17 +57,6 @@ namespace WinFormSQL
             countRows.Text = "Количество записей - 0";
         }
 
-        private void removeUserButton_Click(object sender, EventArgs e)
-        {
-            Data.OpenConnection();
-            command = new SqlCommand($"DELETE FROM [Users] WHERE Login = N'{textBox3.Text}'", Data.GetConnection());
-            if (command.ExecuteNonQuery() > 0)
-                MessageBox.Show("Пользователь успешно удален", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("Такой пользователь не найден", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            Data.CloseConnection();
-        }
-
         private void searchIncident_Click(object sender, EventArgs e)
         {
             Data.OpenConnection();
@@ -100,6 +86,16 @@ namespace WinFormSQL
         private void createIncident_Click(object sender, EventArgs e)
         {
             new IncidentForm(CurrentUser).ShowDialog(this);
+        }
+
+        private void addUserMenu_Click(object sender, EventArgs e)
+        {
+            new AddUserForm().ShowDialog(this);
+        }
+
+        private void deleteUserMenu_Click(object sender, EventArgs e)
+        {
+            new DeleteUserForm().ShowDialog(this);
         }
     }
 }

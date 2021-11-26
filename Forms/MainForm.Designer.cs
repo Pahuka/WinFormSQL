@@ -30,25 +30,26 @@ namespace WinFormSQL
         private void InitializeComponent()
         {
             this.updateButton = new System.Windows.Forms.Button();
-            this.addUserButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.removeUserButton = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.searchIncident = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.countRows = new System.Windows.Forms.Label();
             this.createIncident = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.adminMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.addUserMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteUserMenu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // updateButton
             // 
             this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.updateButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.updateButton.Location = new System.Drawing.Point(710, 12);
+            this.updateButton.Location = new System.Drawing.Point(710, 38);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(117, 43);
             this.updateButton.TabIndex = 1;
@@ -56,58 +57,16 @@ namespace WinFormSQL
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // addUserButton
-            // 
-            this.addUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addUserButton.Enabled = false;
-            this.addUserButton.Location = new System.Drawing.Point(710, 116);
-            this.addUserButton.Name = "addUserButton";
-            this.addUserButton.Size = new System.Drawing.Size(117, 43);
-            this.addUserButton.TabIndex = 1;
-            this.addUserButton.Text = "Добавить пользователя";
-            this.addUserButton.UseVisualStyleBackColor = true;
-            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
-            // 
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(710, 64);
+            this.clearButton.Location = new System.Drawing.Point(710, 88);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(117, 43);
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Очистить поле";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(702, 221);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(135, 100);
-            this.panel2.TabIndex = 3;
-            // 
-            // removeUserButton
-            // 
-            this.removeUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeUserButton.Enabled = false;
-            this.removeUserButton.Location = new System.Drawing.Point(710, 232);
-            this.removeUserButton.Name = "removeUserButton";
-            this.removeUserButton.Size = new System.Drawing.Size(117, 45);
-            this.removeUserButton.TabIndex = 1;
-            this.removeUserButton.Text = "Удалить пользователя";
-            this.removeUserButton.UseVisualStyleBackColor = true;
-            this.removeUserButton.Click += new System.EventHandler(this.removeUserButton_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(710, 286);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "Логин пользователя";
-            this.textBox3.Size = new System.Drawing.Size(117, 23);
-            this.textBox3.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -117,12 +76,14 @@ namespace WinFormSQL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 55);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 377);
+            this.dataGridView1.Size = new System.Drawing.Size(672, 393);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -168,13 +129,48 @@ namespace WinFormSQL
             // createIncident
             // 
             this.createIncident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createIncident.Location = new System.Drawing.Point(710, 168);
+            this.createIncident.Location = new System.Drawing.Point(710, 138);
             this.createIncident.Name = "createIncident";
             this.createIncident.Size = new System.Drawing.Size(117, 43);
             this.createIncident.TabIndex = 1;
             this.createIncident.Text = "Создать инцидент";
             this.createIncident.UseVisualStyleBackColor = true;
             this.createIncident.Click += new System.EventHandler(this.createIncident_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adminMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(844, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // adminMenu
+            // 
+            this.adminMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addUserMenu,
+            this.deleteUserMenu});
+            this.adminMenu.Enabled = false;
+            this.adminMenu.Name = "adminMenu";
+            this.adminMenu.Size = new System.Drawing.Size(134, 20);
+            this.adminMenu.Text = "Администрирование";
+            // 
+            // addUserMenu
+            // 
+            this.addUserMenu.Name = "addUserMenu";
+            this.addUserMenu.Size = new System.Drawing.Size(252, 22);
+            this.addUserMenu.Text = "Зарегистрировать пользователя";
+            this.addUserMenu.Click += new System.EventHandler(this.addUserMenu_Click);
+            // 
+            // deleteUserMenu
+            // 
+            this.deleteUserMenu.Name = "deleteUserMenu";
+            this.deleteUserMenu.Size = new System.Drawing.Size(252, 22);
+            this.deleteUserMenu.Text = "Удалить пользователя";
+            this.deleteUserMenu.Click += new System.EventHandler(this.deleteUserMenu_Click);
             // 
             // MainForm
             // 
@@ -183,16 +179,13 @@ namespace WinFormSQL
             this.ClientSize = new System.Drawing.Size(844, 464);
             this.Controls.Add(this.countRows);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.removeUserButton);
             this.Controls.Add(this.searchIncident);
             this.Controls.Add(this.createIncident);
-            this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(860, 497);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -200,6 +193,8 @@ namespace WinFormSQL
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,17 +202,17 @@ namespace WinFormSQL
 
         #endregion
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button addUserButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button removeUserButton;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button searchIncident;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label countRows;
         private System.Windows.Forms.Button createIncident;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem adminMenu;
+        private System.Windows.Forms.ToolStripMenuItem addUserMenu;
+        private System.Windows.Forms.ToolStripMenuItem deleteUserMenu;
     }
 }
 

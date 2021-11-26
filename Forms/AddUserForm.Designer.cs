@@ -31,11 +31,11 @@ namespace WinFormSQL
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.adminCheck = new System.Windows.Forms.CheckBox();
             this.password = new System.Windows.Forms.TextBox();
             this.lastName = new System.Windows.Forms.TextBox();
             this.login = new System.Windows.Forms.TextBox();
             this.firstName = new System.Windows.Forms.TextBox();
-            this.adminCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,16 @@ namespace WinFormSQL
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные нового сотрудника";
+            // 
+            // adminCheck
+            // 
+            this.adminCheck.AutoSize = true;
+            this.adminCheck.Location = new System.Drawing.Point(53, 191);
+            this.adminCheck.Name = "adminCheck";
+            this.adminCheck.Size = new System.Drawing.Size(113, 19);
+            this.adminCheck.TabIndex = 1;
+            this.adminCheck.Text = "Администратор";
+            this.adminCheck.UseVisualStyleBackColor = true;
             // 
             // password
             // 
@@ -96,23 +106,15 @@ namespace WinFormSQL
             this.firstName.Size = new System.Drawing.Size(211, 23);
             this.firstName.TabIndex = 0;
             // 
-            // adminCheck
-            // 
-            this.adminCheck.AutoSize = true;
-            this.adminCheck.Location = new System.Drawing.Point(53, 191);
-            this.adminCheck.Name = "adminCheck";
-            this.adminCheck.Size = new System.Drawing.Size(113, 19);
-            this.adminCheck.TabIndex = 1;
-            this.adminCheck.Text = "Администратор";
-            this.adminCheck.UseVisualStyleBackColor = true;
-            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 306);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(365, 345);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(365, 345);
             this.Name = "AddUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
