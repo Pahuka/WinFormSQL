@@ -24,7 +24,10 @@ namespace WinFormSQL
         private void Form1_Load(object sender, EventArgs e)
         {
             if (CurrentUser.Administrator)
+            {
                 addUserButton.Enabled = true;
+                removeUserButton.Enabled = true;
+            }
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -37,7 +40,9 @@ namespace WinFormSQL
             if (Data.GetConnection().State == System.Data.ConnectionState.Closed)
                 Data.OpenConnection();
             dataSet = new DataSet();
-            adapter = new SqlDataAdapter("SELECT Id, Title, Requisites, Author, [Creation Date] FROM [Incidents]", Data.GetConnection());
+            adapter = new SqlDataAdapter("SELECT Incidents.Id, Incidents.Title, Incidents.Requisites, Incidents.[Creation Date], " +
+                "CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
+                "FROM [Incidents], Users WHERE Users.Id = Incidents.Author", Data.GetConnection());
             adapter.Fill(dataSet, "Incidents");
             dataGridView1.DataSource = dataSet.Tables["Incidents"];
             countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
@@ -58,20 +63,23 @@ namespace WinFormSQL
         private void removeUserButton_Click(object sender, EventArgs e)
         {
             Data.OpenConnection();
-            command = new SqlCommand($"DELETE FROM [Incidents] WHERE [Id] = N'{textBox3.Text}'", Data.GetConnection());
-            command.ExecuteNonQuery();
-            UpdateData();
+            command = new SqlCommand($"DELETE FROM [Users] WHERE Login = N'{textBox3.Text}'", Data.GetConnection());
+            if (command.ExecuteNonQuery() > 0)
+                MessageBox.Show("Пользователь успешно удален", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Такой пользователь не найден", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Data.CloseConnection();
         }
 
         private void searchIncident_Click(object sender, EventArgs e)
         {
-            //Data.OpenConnection();
-            //dataSet = new DataSet();
-            //adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE [User Name] = N'{textBox1.Text}'", Data.GetConnection());
-            //adapter.Fill(dataSet, "Incidents");
-            //dataGridView1.DataSource = dataSet.Tables["Incidents"];
-            //countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
-            //Data.CloseConnection();
+            Data.OpenConnection();
+            dataSet = new DataSet();
+            adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{textBox1.Text}'", Data.GetConnection());
+            adapter.Fill(dataSet, "Incidents");
+            dataGridView1.DataSource = dataSet.Tables["Incidents"];
+            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
+            Data.CloseConnection();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -79,13 +87,6 @@ namespace WinFormSQL
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
             var form2 = new Form2();
-            //if (dataGridView1[e.ColumnIndex, e.RowIndex].ValueType == typeof(DateTime))
-            //{
-            //    var selectedCell = (DateTime)dataGridView1[e.ColumnIndex, e.RowIndex].Value;
-            //    form2.SqlCommand = 
-            //        $"SELECT * FROM [Incidents] WHERE [{dataGridView1.Columns[e.ColumnIndex].Name}] = N'{selectedCell.ToString("yyyy-MM-dd HH:mm:ss.fff")}'";
-            //}
-            //else
             form2.SqlCommand =
                     $"SELECT * FROM [Incidents] WHERE [{dataGridView1.Columns[0].Name}] = N'{dataGridView1[0, e.RowIndex].Value}'";
             form2.ShowDialog(this);

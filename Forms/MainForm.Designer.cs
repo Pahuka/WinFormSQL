@@ -91,6 +91,7 @@ namespace WinFormSQL
             // removeUserButton
             // 
             this.removeUserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeUserButton.Enabled = false;
             this.removeUserButton.Location = new System.Drawing.Point(710, 232);
             this.removeUserButton.Name = "removeUserButton";
             this.removeUserButton.Size = new System.Drawing.Size(117, 45);
@@ -104,7 +105,7 @@ namespace WinFormSQL
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Location = new System.Drawing.Point(710, 286);
             this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "Имя пользователя";
+            this.textBox3.PlaceholderText = "Логин пользователя";
             this.textBox3.Size = new System.Drawing.Size(117, 23);
             this.textBox3.TabIndex = 2;
             // 
@@ -117,11 +118,11 @@ namespace WinFormSQL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(672, 377);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 

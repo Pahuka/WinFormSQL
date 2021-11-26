@@ -50,6 +50,7 @@ namespace WinFormSQL
             // 
             this.reqBox.Location = new System.Drawing.Point(12, 12);
             this.reqBox.Name = "reqBox";
+            this.reqBox.PlaceholderText = "ИНН КПП";
             this.reqBox.Size = new System.Drawing.Size(187, 23);
             this.reqBox.TabIndex = 1;
             // 
@@ -57,6 +58,7 @@ namespace WinFormSQL
             // 
             this.titleBox.Location = new System.Drawing.Point(234, 12);
             this.titleBox.Name = "titleBox";
+            this.titleBox.PlaceholderText = "Заголовок";
             this.titleBox.Size = new System.Drawing.Size(316, 23);
             this.titleBox.TabIndex = 2;
             // 
@@ -68,6 +70,7 @@ namespace WinFormSQL
             this.contentBox.Location = new System.Drawing.Point(12, 50);
             this.contentBox.Multiline = true;
             this.contentBox.Name = "contentBox";
+            this.contentBox.PlaceholderText = "Текст инцидента";
             this.contentBox.Size = new System.Drawing.Size(538, 295);
             this.contentBox.TabIndex = 3;
             // 
