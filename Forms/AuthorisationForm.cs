@@ -37,6 +37,7 @@ namespace WinFormSQL
             }
             else
                 MessageBox.Show("Пользователь не найден", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Data.CloseConnection();
         }
     }
 }

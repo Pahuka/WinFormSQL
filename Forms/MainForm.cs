@@ -11,7 +11,7 @@ namespace WinFormSQL
         static DataSet dataSet;
         static SqlCommand command;
         static SqlDataAdapter adapter;
-        public User CurrentUser { get; set; }
+        public static User CurrentUser { get; set; }
 
         public MainForm(SqlDataReader userData)
         {
@@ -72,7 +72,7 @@ namespace WinFormSQL
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
-            var form2 = new Form2();
+            var form2 = new IncEditForm();
             form2.SqlCommand =
                     $"SELECT * FROM [Incidents] WHERE [{dataGridView1.Columns[0].Name}] = N'{dataGridView1[0, e.RowIndex].Value}'";
             form2.ShowDialog(this);
