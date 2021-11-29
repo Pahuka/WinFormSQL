@@ -9,7 +9,7 @@ namespace WinFormSQL
     public partial class MainForm : Form
     {
         static DataSet dataSet;
-        static SqlCommand command;
+        //static SqlCommand command;
         static SqlDataAdapter adapter;
         public static User CurrentUser { get; set; }
 
@@ -25,10 +25,6 @@ namespace WinFormSQL
         {
             if (CurrentUser.Administrator)
                 adminMenu.Enabled = true;
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
-        {
             UpdateData();
         }
 
@@ -40,28 +36,6 @@ namespace WinFormSQL
             adapter = new SqlDataAdapter("SELECT Incidents.Id, Incidents.Title, Incidents.Requisites, Incidents.[Creation Date], " +
                 "CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
                 "FROM [Incidents], Users WHERE Users.Id = Incidents.Author", Data.GetConnection());
-            adapter.Fill(dataSet, "Incidents");
-            dataGridView1.DataSource = dataSet.Tables["Incidents"];
-            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
-            Data.CloseConnection();
-        }
-
-        private void addUserButton_Click(object sender, EventArgs e)
-        {
-            new AddUserForm().ShowDialog(this);
-        }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Columns.Clear();
-            countRows.Text = "Количество записей - 0";
-        }
-
-        private void searchIncident_Click(object sender, EventArgs e)
-        {
-            Data.OpenConnection();
-            dataSet = new DataSet();
-            adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{textBox1.Text}'", Data.GetConnection());
             adapter.Fill(dataSet, "Incidents");
             dataGridView1.DataSource = dataSet.Tables["Incidents"];
             countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
@@ -83,11 +57,6 @@ namespace WinFormSQL
             Application.Exit();
         }
 
-        private void createIncident_Click(object sender, EventArgs e)
-        {
-            new IncidentForm(CurrentUser).ShowDialog(this);
-        }
-
         private void addUserMenu_Click(object sender, EventArgs e)
         {
             new AddUserForm().ShowDialog(this);
@@ -96,6 +65,42 @@ namespace WinFormSQL
         private void deleteUserMenu_Click(object sender, EventArgs e)
         {
             new DeleteUserForm().ShowDialog(this);
+        }
+
+        private void updateIncList_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void searchTextBox_Enter(object sender, EventArgs e)
+        {
+            Data.OpenConnection();
+            dataSet = new DataSet();
+            adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", Data.GetConnection());
+            adapter.Fill(dataSet, "Incidents");
+            dataGridView1.DataSource = dataSet.Tables["Incidents"];
+            countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
+            Data.CloseConnection();
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Data.OpenConnection();
+                dataSet = new DataSet();
+                adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", Data.GetConnection());
+                adapter.Fill(dataSet, "Incidents");
+                dataGridView1.DataSource = dataSet.Tables["Incidents"];
+                countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
+                Data.CloseConnection();
+            }
+        }
+
+        private void createInc_Click(object sender, EventArgs e)
+        {
+            new IncidentForm(CurrentUser).ShowDialog(this);
+            UpdateData();
         }
     }
 }

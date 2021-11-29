@@ -64,6 +64,8 @@ namespace WinFormSQL
             // 
             // editTextBox
             // 
+            this.editTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.editTextBox.Location = new System.Drawing.Point(13, 352);
             this.editTextBox.Multiline = true;
             this.editTextBox.Name = "editTextBox";
@@ -73,6 +75,7 @@ namespace WinFormSQL
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Location = new System.Drawing.Point(577, 486);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(95, 33);
@@ -91,7 +94,7 @@ namespace WinFormSQL
             this.Controls.Add(this.contentBox);
             this.Controls.Add(this.titleBox);
             this.Controls.Add(this.reqBox);
-            this.MinimumSize = new System.Drawing.Size(700, 400);
+            this.MinimumSize = new System.Drawing.Size(700, 570);
             this.Name = "IncEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Подробности записи";

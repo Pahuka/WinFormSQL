@@ -29,44 +29,19 @@ namespace WinFormSQL
         /// </summary>
         private void InitializeComponent()
         {
-            this.updateButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.searchIncident = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.countRows = new System.Windows.Forms.Label();
-            this.createIncident = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteUserMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateIncList = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchMenuBbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.createInc = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // updateButton
-            // 
-            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.updateButton.Location = new System.Drawing.Point(710, 38);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(117, 43);
-            this.updateButton.TabIndex = 1;
-            this.updateButton.Text = "Обновить данные";
-            this.updateButton.UseVisualStyleBackColor = true;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(710, 88);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(117, 43);
-            this.clearButton.TabIndex = 1;
-            this.clearButton.Text = "Очистить поле";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // dataGridView1
             // 
@@ -83,38 +58,9 @@ namespace WinFormSQL
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 393);
+            this.dataGridView1.Size = new System.Drawing.Size(820, 393);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Location = new System.Drawing.Point(702, 330);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(135, 103);
-            this.panel3.TabIndex = 3;
-            // 
-            // searchIncident
-            // 
-            this.searchIncident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchIncident.Location = new System.Drawing.Point(710, 341);
-            this.searchIncident.Name = "searchIncident";
-            this.searchIncident.Size = new System.Drawing.Size(117, 48);
-            this.searchIncident.TabIndex = 1;
-            this.searchIncident.Text = "Поиск";
-            this.searchIncident.UseVisualStyleBackColor = true;
-            this.searchIncident.Click += new System.EventHandler(this.searchIncident_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(710, 395);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Номер инцидента";
-            this.textBox1.Size = new System.Drawing.Size(117, 23);
-            this.textBox1.TabIndex = 2;
             // 
             // countRows
             // 
@@ -126,22 +72,14 @@ namespace WinFormSQL
             this.countRows.TabIndex = 5;
             this.countRows.Text = "Количество записей - 0";
             // 
-            // createIncident
-            // 
-            this.createIncident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createIncident.Location = new System.Drawing.Point(710, 138);
-            this.createIncident.Name = "createIncident";
-            this.createIncident.Size = new System.Drawing.Size(117, 43);
-            this.createIncident.TabIndex = 1;
-            this.createIncident.Text = "Создать инцидент";
-            this.createIncident.UseVisualStyleBackColor = true;
-            this.createIncident.Click += new System.EventHandler(this.createIncident_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminMenu});
+            this.adminMenu,
+            this.updateIncList,
+            this.searchMenuBbutton,
+            this.createInc});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(844, 24);
@@ -172,6 +110,35 @@ namespace WinFormSQL
             this.deleteUserMenu.Text = "Удалить пользователя";
             this.deleteUserMenu.Click += new System.EventHandler(this.deleteUserMenu_Click);
             // 
+            // updateIncList
+            // 
+            this.updateIncList.Name = "updateIncList";
+            this.updateIncList.Size = new System.Drawing.Size(183, 20);
+            this.updateIncList.Text = "Обновить список инцидентов";
+            this.updateIncList.Click += new System.EventHandler(this.updateIncList_Click);
+            // 
+            // searchMenuBbutton
+            // 
+            this.searchMenuBbutton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchTextBox});
+            this.searchMenuBbutton.Name = "searchMenuBbutton";
+            this.searchMenuBbutton.Size = new System.Drawing.Size(115, 20);
+            this.searchMenuBbutton.Text = "Поиск инцидента";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(100, 23);
+            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
+            this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
+            // 
+            // createInc
+            // 
+            this.createInc.Name = "createInc";
+            this.createInc.Size = new System.Drawing.Size(117, 20);
+            this.createInc.Text = "Создать инцидент";
+            this.createInc.Click += new System.EventHandler(this.createInc_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -179,12 +146,6 @@ namespace WinFormSQL
             this.ClientSize = new System.Drawing.Size(844, 464);
             this.Controls.Add(this.countRows);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.searchIncident);
-            this.Controls.Add(this.createIncident);
-            this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(860, 497);
             this.Name = "MainForm";
@@ -201,18 +162,16 @@ namespace WinFormSQL
         }
 
         #endregion
-        private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button searchIncident;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label countRows;
-        private System.Windows.Forms.Button createIncident;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem adminMenu;
         private System.Windows.Forms.ToolStripMenuItem addUserMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteUserMenu;
+        private System.Windows.Forms.ToolStripMenuItem updateIncList;
+        private System.Windows.Forms.ToolStripMenuItem searchMenuBbutton;
+        private System.Windows.Forms.ToolStripTextBox searchTextBox;
+        private System.Windows.Forms.ToolStripMenuItem createInc;
     }
 }
 
