@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBase
+namespace DBase
 {
     public class User
     {
@@ -26,7 +26,7 @@ namespace DataBase
                 Login = (string)userData.GetValue(3);
                 Administrator = (string)userData.GetValue(5) == "true" ? true : false;
             }
-            Data.CloseConnection();
+            DataBase.CloseConnection();
         }
     }
 }

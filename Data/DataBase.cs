@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace DataBase
+namespace DBase
 {
-    static class Data
+    public static class DataBase
     {
         private static SqlConnection sqlConnection = new SqlConnection(
             @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\brylin_da\source\repos\WinFormSQL\Database1.mdf;Integrated Security=True");

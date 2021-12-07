@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DataBase;
+using DBase;
 
 namespace WinFormSQL
 {
@@ -25,21 +25,21 @@ namespace WinFormSQL
                 MessageBox.Show("Заполните все поля", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                Data.OpenConnection();
+                DataBase.OpenConnection();
                 var admin = adminCheck.Checked == true ? "true" : "false";
-                command = new SqlCommand($"SELECT Login FROM [Users] WHERE Login = N'{login.Text}'", Data.GetConnection());
+                command = new SqlCommand($"SELECT Login FROM [Users] WHERE Login = N'{login.Text}'", DataBase.GetConnection());
                 if (command.ExecuteReader().HasRows)
                 {
                     MessageBox.Show("Такой логин уже зарегистрирован", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    Data.CloseConnection();
-                    Data.OpenConnection();
+                    DataBase.CloseConnection();
+                    DataBase.OpenConnection();
                     command = new SqlCommand($"INSERT INTO [Users] (Id, [First Name], [Last Name], Login, Password, Administrator) " +
-                    $"VALUES ('{Guid.NewGuid()}', N'{firstName.Text}', N'{lastName.Text}', N'{login.Text}', N'{password.Text}' , N'{admin}')", Data.GetConnection());
+                    $"VALUES ('{Guid.NewGuid()}', N'{firstName.Text}', N'{lastName.Text}', N'{login.Text}', N'{password.Text}' , N'{admin}')", DataBase.GetConnection());
                     command.ExecuteNonQuery();
-                    Data.CloseConnection();
+                    DataBase.CloseConnection();
                     MessageBox.Show("Пользователь успешно добавлен", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

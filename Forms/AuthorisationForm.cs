@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataBase;
+using DBase;
 
 namespace WinFormSQL
 {
@@ -26,8 +26,8 @@ namespace WinFormSQL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Data.OpenConnection();
-            SqlCommand command = new SqlCommand($"SELECT * FROM Users WHERE Login = N'{textBox1.Text}' AND Password = N'{textBox2.Text}'", Data.GetConnection());
+            DataBase.OpenConnection();
+            SqlCommand command = new SqlCommand($"SELECT * FROM Users WHERE Login = N'{textBox1.Text}' AND Password = N'{textBox2.Text}'", DataBase.GetConnection());
             SqlDataReader ds = command.ExecuteReader();
             
             if (ds.HasRows)
@@ -37,7 +37,7 @@ namespace WinFormSQL
             }
             else
                 MessageBox.Show("Пользователь не найден", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Data.CloseConnection();
+            DataBase.CloseConnection();
         }
     }
 }

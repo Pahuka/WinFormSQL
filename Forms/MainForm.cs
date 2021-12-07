@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using DataBase;
+using DBase;
 
 namespace WinFormSQL
 {
@@ -30,16 +30,16 @@ namespace WinFormSQL
 
         private void UpdateData()
         {
-            if (Data.GetConnection().State == System.Data.ConnectionState.Closed)
-                Data.OpenConnection();
+            if (DataBase.GetConnection().State == System.Data.ConnectionState.Closed)
+                DataBase.OpenConnection();
             dataSet = new DataSet();
             adapter = new SqlDataAdapter("SELECT Incidents.Id, Incidents.Title, Incidents.Requisites, Incidents.[Creation Date], " +
                 "CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
-                "FROM [Incidents], Users WHERE Users.Id = Incidents.Author", Data.GetConnection());
+                "FROM [Incidents], Users WHERE Users.Id = Incidents.Author", DataBase.GetConnection());
             adapter.Fill(dataSet, "Incidents");
             dataGridView1.DataSource = dataSet.Tables["Incidents"];
             countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
-            Data.CloseConnection();
+            DataBase.CloseConnection();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -74,26 +74,26 @@ namespace WinFormSQL
 
         private void searchTextBox_Enter(object sender, EventArgs e)
         {
-            Data.OpenConnection();
+            DataBase.OpenConnection();
             dataSet = new DataSet();
-            adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", Data.GetConnection());
+            adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", DataBase.GetConnection());
             adapter.Fill(dataSet, "Incidents");
             dataGridView1.DataSource = dataSet.Tables["Incidents"];
             countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
-            Data.CloseConnection();
+            DataBase.CloseConnection();
         }
 
         private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Data.OpenConnection();
+                DataBase.OpenConnection();
                 dataSet = new DataSet();
-                adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", Data.GetConnection());
+                adapter = new SqlDataAdapter($"SELECT * FROM [Incidents] WHERE Id = N'{searchTextBox.Text}'", DataBase.GetConnection());
                 adapter.Fill(dataSet, "Incidents");
                 dataGridView1.DataSource = dataSet.Tables["Incidents"];
                 countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
-                Data.CloseConnection();
+                DataBase.CloseConnection();
             }
         }
 
