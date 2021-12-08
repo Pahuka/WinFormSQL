@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace WinFormSQL.Data.Tables
 {
     [Table("Incidents")]
-    class Incidents
+    public class DbIncident
     {
         [Key]
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace WinFormSQL.Data.Tables
         public DateTime CreationDate { get; set; }
         public string Content { get; set; }
 
-        public Incidents()
+        public DbIncident()
         {
             CreationDate = DateTime.Now;
         }

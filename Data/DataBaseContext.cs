@@ -9,10 +9,10 @@ using WinFormSQL.Data.Tables;
 
 namespace WinFormSQL.Data
 {
-    class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext
     {
         public DataBaseContext()
-            : base() { }
+            : base("MyDb") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -20,8 +20,8 @@ namespace WinFormSQL.Data
             //DataBase.SetInitializer(sqlConnectInit);
         }
 
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Incidents> Incidents { get; set; }
+        public DbSet<DbUser> Users { get; set; }
+        public DbSet<DbIncident> Incidents { get; set; }
         public DbSet<DbHistory> History { get; set; }
     }
 }

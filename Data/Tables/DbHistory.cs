@@ -10,23 +10,21 @@ using System.Threading.Tasks;
 namespace WinFormSQL.Data.Tables
 {
     [Table("History")]
-    class DbHistory
+    public class DbHistory
     {
         [Key]
         public Guid Id { get; set; }
-        [Unique]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IncidentId { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int IncidentNumber { get; set; }
         public Guid UserId { get; set; }
         public DateTime EditingDate { get; set; }
         public string Content { get; set; }
 
-        public DbHistory(string update, int incidentId)
+        public DbHistory()
         {
             Id = Guid.NewGuid();
             EditingDate = DateTime.Now;
-            Content = update;
-            IncidentId = incidentId;
         }
     }
 }

@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace WinFormSQL.Data.Tables
 {
     [Table("Users")]
-    class Users
+    public class DbUser
     {
         [Key]
         public Guid Id { get; private set; }
 
         public string FirstName { get; set; }
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
         [Unique]
         public string Login { get; set; }
@@ -25,7 +25,7 @@ namespace WinFormSQL.Data.Tables
         
         public bool Administrator { get; set; }
 
-        public Users()
+        public DbUser()
         {
             Id = Guid.NewGuid();
         }

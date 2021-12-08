@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormSQL.Data;
 
 namespace DBase
 {
@@ -20,7 +21,7 @@ namespace DBase
         {
             while (userData.Read())
             {
-                Id = (string)userData.GetValue(0);
+                this.Id = (string)userData.GetValue(0);
                 firstname = (string)userData.GetValue(1);
                 lastName = (string)userData.GetValue(2);
                 Login = (string)userData.GetValue(3);
