@@ -1,11 +1,6 @@
-﻿using DBase;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WinFormSQL.Data;
 using WinFormSQL.Data.Tables;
@@ -31,7 +26,7 @@ namespace WinFormSQL
         private void createButton_Click(object sender, EventArgs e)
         {
             //DataBase.OpenConnection();
-            //var command = new SqlCommand($"INSERT INTO [Incidents] (Title, Requisites, Author, Content) " +
+            //var command = new SqlCommand($"INSERT INTO [Incidents] (Title, Requisites, AuthorId, Content) " +
             //    $"VALUES (N'{titleBox.Text}', N'{reqBox.Text}', N'{CurrentUser.Id}', N'{contentBox.Text}') " +
             //    $"SELECT SCOPE_IDENTITY()", DataBase.GetConnection());
             //var lastId = command.ExecuteScalar();
@@ -43,10 +38,11 @@ namespace WinFormSQL
             using (var context = new DataBaseContext())
             {
                 context.Incidents.Add(new DbIncident() {
-                Author = CurrentUser.Id,
+                AuthorId = CurrentUser.Id,
+                Author = $"{CurrentUser.FirstName} {CurrentUser.LastName}",
                 Requisites = reqBox.Text,
                 Title = titleBox.Text,
-                Content = contentBox.Text});
+                Content = contentBox.Text});;
                 context.SaveChanges();
                 var incidentId = context.Incidents.OrderByDescending(x => x.CreationDate).FirstOrDefault().Id;
                 context.History.Add(new DbHistory() {

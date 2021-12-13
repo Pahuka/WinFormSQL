@@ -12,7 +12,10 @@ namespace WinFormSQL.Data
     public class DataBaseContext : DbContext
     {
         public DataBaseContext()
-            : base("MyDb") { }
+            : base("localDb2") 
+        {
+            Database.SetInitializer<DataBaseContext>(new DataBaseInitializer());
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

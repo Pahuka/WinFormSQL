@@ -39,23 +39,25 @@ namespace WinFormSQL
             //    DataBase.OpenConnection();
             //dataSet = new DataSet();
             //adapter = new SqlDataAdapter("SELECT Incidents.Id, Incidents.Title, Incidents.Requisites, Incidents.[Creation Date], " +
-            //    "CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
-            //    "FROM [Incidents], Users WHERE Users.Id = Incidents.Author", DataBase.GetConnection());
+            //    "CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS AuthorId " +
+            //    "FROM [Incidents], Users WHERE Users.Id = Incidents.AuthorId", DataBase.GetConnection());
             //adapter.Fill(dataSet, "Incidents");
             //dataGridView1.DataSource = dataSet.Tables["Incidents"];
             //countRows.Text = $"Количество записей - {dataGridView1.Rows.Count.ToString()}";
             //DataBase.CloseConnection();
-            using (var cont = new DataBaseContext()) 
+
+            using (var context = new DataBaseContext()) 
             {
-                dataGridView1.DataSource = cont.Incidents.ToList();
-                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.DataSource = context.Incidents.ToList();
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
             }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex < 0 || e.ColumnIndex < 0)
-            //    return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
             var form2 = new IncEditForm();
             //form2.SqlCommand =
             //        $"SELECT * FROM [Incidents] WHERE [{dataGridView1.Columns[0].Name}] = N'{dataGridView1[0, e.RowIndex].Value}'";

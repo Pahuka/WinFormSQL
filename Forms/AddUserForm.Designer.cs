@@ -70,7 +70,7 @@ namespace WinFormSQL
             this.adminCheck.Location = new System.Drawing.Point(53, 191);
             this.adminCheck.Name = "adminCheck";
             this.adminCheck.Size = new System.Drawing.Size(113, 19);
-            this.adminCheck.TabIndex = 1;
+            this.adminCheck.TabIndex = 4;
             this.adminCheck.Text = "Администратор";
             this.adminCheck.UseVisualStyleBackColor = true;
             // 
@@ -80,7 +80,7 @@ namespace WinFormSQL
             this.password.Name = "password";
             this.password.PlaceholderText = "Пароль";
             this.password.Size = new System.Drawing.Size(211, 23);
-            this.password.TabIndex = 0;
+            this.password.TabIndex = 3;
             // 
             // lastName
             // 
@@ -88,7 +88,7 @@ namespace WinFormSQL
             this.lastName.Name = "lastName";
             this.lastName.PlaceholderText = "Фамилия";
             this.lastName.Size = new System.Drawing.Size(211, 23);
-            this.lastName.TabIndex = 0;
+            this.lastName.TabIndex = 1;
             // 
             // login
             // 
@@ -96,7 +96,7 @@ namespace WinFormSQL
             this.login.Name = "login";
             this.login.PlaceholderText = "Логин";
             this.login.Size = new System.Drawing.Size(211, 23);
-            this.login.TabIndex = 0;
+            this.login.TabIndex = 2;
             // 
             // firstName
             // 

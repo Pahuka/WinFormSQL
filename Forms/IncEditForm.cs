@@ -30,7 +30,7 @@ namespace WinFormSQL
             //}
             //DataBase.CloseConnection();
             //DataBase.OpenConnection();
-            //var historyReader = new SqlCommand($"SELECT [Editing Date], Content, CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
+            //var historyReader = new SqlCommand($"SELECT [Editing Date], Content, CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS AuthorId " +
             //        $"FROM History, Users WHERE [Incident Id] = N'{IncidentNumber}' AND History.[User Id] = Users.Id " +
             //        $"ORDER BY [Editing Date]", DataBase.GetConnection()).ExecuteReader();
             //while (historyReader.Read())
@@ -73,7 +73,7 @@ namespace WinFormSQL
             //    .ExecuteNonQuery();
             //DataBase.CloseConnection();
             //DataBase.OpenConnection();
-            //var historyReader = new SqlCommand($"SELECT [Editing Date], Content, CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS Author " +
+            //var historyReader = new SqlCommand($"SELECT [Editing Date], Content, CONCAT(Users.[First Name], ' ', Users.[Last Name]) AS AuthorId " +
             //        $"FROM History, Users WHERE [Incident Id] = N'{IncidentNumber}' AND History.[User Id] = Users.Id " +
             //        $"ORDER BY [Editing Date]", DataBase.GetConnection()).ExecuteReader();
             //contentBox.Clear();

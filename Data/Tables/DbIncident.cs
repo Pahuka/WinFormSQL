@@ -15,7 +15,8 @@ namespace WinFormSQL.Data.Tables
         public int Id { get; set; }
         public string Title { get; set; }
         public string Requisites { get; set; }
-        public Guid Author { get; set; }
+        public string Author { get; set; }
+        public Guid AuthorId { get; set; }
         public DateTime CreationDate { get; set; }
         public string Content { get; set; }
 
