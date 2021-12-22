@@ -33,8 +33,6 @@ namespace WinFormSQL
             this.countRows = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.addUserMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteUserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.updateIncList = new System.Windows.Forms.ToolStripMenuItem();
             this.searchMenuBbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -88,27 +86,11 @@ namespace WinFormSQL
             // 
             // adminMenu
             // 
-            this.adminMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addUserMenu,
-            this.deleteUserMenu});
             this.adminMenu.Enabled = false;
             this.adminMenu.Name = "adminMenu";
             this.adminMenu.Size = new System.Drawing.Size(134, 20);
             this.adminMenu.Text = "Администрирование";
-            // 
-            // addUserMenu
-            // 
-            this.addUserMenu.Name = "addUserMenu";
-            this.addUserMenu.Size = new System.Drawing.Size(252, 22);
-            this.addUserMenu.Text = "Зарегистрировать пользователя";
-            this.addUserMenu.Click += new System.EventHandler(this.addUserMenu_Click);
-            // 
-            // deleteUserMenu
-            // 
-            this.deleteUserMenu.Name = "deleteUserMenu";
-            this.deleteUserMenu.Size = new System.Drawing.Size(252, 22);
-            this.deleteUserMenu.Text = "Удалить пользователя";
-            this.deleteUserMenu.Click += new System.EventHandler(this.deleteUserMenu_Click);
+            this.adminMenu.Click += new System.EventHandler(this.adminMenu_Click);
             // 
             // updateIncList
             // 
@@ -129,7 +111,6 @@ namespace WinFormSQL
             // 
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(100, 23);
-            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
             this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
             // 
             // createInc
@@ -166,8 +147,6 @@ namespace WinFormSQL
         private System.Windows.Forms.Label countRows;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem adminMenu;
-        private System.Windows.Forms.ToolStripMenuItem addUserMenu;
-        private System.Windows.Forms.ToolStripMenuItem deleteUserMenu;
         private System.Windows.Forms.ToolStripMenuItem updateIncList;
         private System.Windows.Forms.ToolStripMenuItem searchMenuBbutton;
         private System.Windows.Forms.ToolStripTextBox searchTextBox;
