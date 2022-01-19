@@ -7,7 +7,7 @@ namespace WinFormSQL.Data
     public class DataBaseContext : DbContext
     {
         public DataBaseContext()
-            : base("localDb2") 
+            : base("localDb") 
         {
             Database.SetInitializer<DataBaseContext>(new DataBaseInitializer());
         }
