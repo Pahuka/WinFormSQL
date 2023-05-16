@@ -9,8 +9,6 @@ namespace WinFormSQL
 {
     public partial class IncidentForm : Form
     {
-        //public User CurrentUser { get; set; }
-        //public IncidentForm(User user)
         public DbUser CurrentUser { get; set; }
         public IncidentForm(DbUser user)
         {
@@ -25,16 +23,6 @@ namespace WinFormSQL
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            //DataBase.OpenConnection();
-            //var command = new SqlCommand($"INSERT INTO [Incidents] (Title, Requisites, AuthorId, Content) " +
-            //    $"VALUES (N'{titleBox.Text}', N'{reqBox.Text}', N'{CurrentUser.Id}', N'{contentBox.Text}') " +
-            //    $"SELECT SCOPE_IDENTITY()", DataBase.GetConnection());
-            //var lastId = command.ExecuteScalar();
-            //new SqlCommand($"INSERT INTO [History] (Id, [Incident Id], [User Id], Content)" +
-            //    $"VALUES (N'{Guid.NewGuid()}', N'{lastId.ToString()}', N'{MainForm.CurrentUser.Id}', N'{contentBox.Text}')", DataBase.GetConnection())
-            //    .ExecuteNonQuery();
-            //DataBase.CloseConnection();
-
             using (var context = new DataBaseContext())
             {
                 context.Incidents.Add(new DbIncident() {

@@ -1,5 +1,4 @@
-﻿//using DBase;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
 using WinFormSQL.Data;
