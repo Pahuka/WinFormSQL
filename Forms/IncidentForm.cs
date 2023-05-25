@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using WinFormSQL.Data;
@@ -30,9 +29,9 @@ namespace WinFormSQL
                 Author = $"{CurrentUser.FirstName} {CurrentUser.LastName}",
                 Requisites = reqBox.Text,
                 Title = titleBox.Text,
-                Content = contentBox.Text});;
+                Content = contentBox.Text});
                 context.SaveChanges();
-                var incidentId = context.Incidents.OrderByDescending(x => x.CreationDate).FirstOrDefault().Id;
+                var incidentId = context.Incidents.OrderByDescending(x => x.CreationDate).FirstOrDefault()!.Id;
                 context.History.Add(new DbHistory() {
                 IncidentNumber = incidentId,
                 UserId = CurrentUser.Id,

@@ -5,9 +5,9 @@ using WinFormSQL.Data;
 
 namespace WinFormSQL
 {
-    public partial class AuthorisationForm : Form
+    public partial class AuthorizationForm : Form
     {       
-        public AuthorisationForm()
+        public AuthorizationForm()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace WinFormSQL
 
             using (var cont = new DataBaseContext())
             {
-                var user = cont.Users.Where(x => x.Login == textBox1.Text && x.Password == textBox2.Text).FirstOrDefault();
+                var user = cont.Users.FirstOrDefault(x => x.Login == textBox1.Text && x.Password == textBox2.Text);
                 if (user != null)
                 {
                     new MainForm(user).Show();

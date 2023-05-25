@@ -14,7 +14,7 @@ namespace WinFormSQL
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorisationForm());
+            Application.Run(new AuthorizationForm());
         }
     }
 }

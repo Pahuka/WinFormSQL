@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormSQL
 {
-    partial class AuthorisationForm
+    partial class AuthorizationForm
     {
         /// <summary>
         /// Required designer variable.

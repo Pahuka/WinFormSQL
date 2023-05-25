@@ -8,7 +8,7 @@ namespace WinFormSQL.Data.Tables
     public class DbHistory
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IncidentNumber { get; set; }
