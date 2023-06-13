@@ -1,25 +1,23 @@
-﻿using SQLite.CodeFirst;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using SQLite.CodeFirst;
 using WinFormSQL.Data.Tables;
 
-namespace WinFormSQL.Data
+namespace WinFormSQL.Data;
+
+public class DataBaseContext : DbContext
 {
-    public class DataBaseContext : DbContext
-    {
-        public DataBaseContext()
-            : base("localDb") 
-        {
-            Database.SetInitializer<DataBaseContext>(new DataBaseInitializer());
-        }
+	public DataBaseContext()
+		: base("localDb")
+	{
+		Database.SetInitializer(new DataBaseInitializer());
+	}
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            var sqlConnectInit = new SqliteCreateDatabaseIfNotExists<DataBaseContext>(modelBuilder);
-            //DataBase.SetInitializer(sqlConnectInit);
-        }
+	public DbSet<DbUser> Users { get; set; }
+	public DbSet<DbIncident> Incidents { get; set; }
+	public DbSet<DbHistory> History { get; set; }
 
-        public DbSet<DbUser> Users { get; set; }
-        public DbSet<DbIncident> Incidents { get; set; }
-        public DbSet<DbHistory> History { get; set; }
-    }
+	protected override void OnModelCreating(DbModelBuilder modelBuilder)
+	{
+		var sqlConnectInit = new SqliteCreateDatabaseIfNotExists<DataBaseContext>(modelBuilder);
+	}
 }

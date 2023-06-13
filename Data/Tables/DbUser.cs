@@ -1,29 +1,26 @@
-﻿using SQLite.CodeFirst;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SQLite.CodeFirst;
 
-namespace WinFormSQL.Data.Tables
+namespace WinFormSQL.Data.Tables;
+
+[Table("Users")]
+public class DbUser
 {
-    [Table("Users")]
-    public class DbUser
-    {
-        [Key]
-        public Guid Id { get; private set; }
+	public DbUser()
+	{
+		Id = Guid.NewGuid();
+	}
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+	[Key] public Guid Id { get; private set; }
 
-        [Unique]
-        public string Login { get; set; }
+	public string FirstName { get; set; }
+	public string LastName { get; set; }
 
-        public string Password { get; set; }
-        
-        public bool Administrator { get; set; }
+	[Unique] public string Login { get; set; }
 
-        public DbUser()
-        {
-            Id = Guid.NewGuid();
-        }
-    }
+	public string Password { get; set; }
+
+	public bool Administrator { get; set; }
 }
